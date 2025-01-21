@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react"
 import { DimensionProps } from "../types/dimensions"
+import { BubbleType, useBubbleContext } from "../context/BubbleContext"
 
 export default function Bubble({
     containerDimensions,
-    indexOfBubble,
-    popBubble,
+    bubble,
 }: {
     containerDimensions: DimensionProps
-    indexOfBubble: number
-    popBubble: (bubbleIndex: number) => void
+    bubble: BubbleType
 }) {
     const randomPosition = () => {
         return {
@@ -16,12 +15,16 @@ export default function Bubble({
             y: Math.random() * containerDimensions.y,
         }
     }
-    const [bubblePosition, setBubblePosition] = useState(() => randomPosition())
+    const [bubblePosition, setBubblePosition] = useState(
+        () => bubble.startingPosition || randomPosition(),
+    )
+
+    const { popBubble } = useBubbleContext()
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             setBubblePosition(randomPosition)
-        })
+        }, 100)
         const intervalId = setInterval(() => {
             setBubblePosition(randomPosition)
         }, 50000)
@@ -33,7 +36,7 @@ export default function Bubble({
 
     return (
         <div
-            onClick={() => popBubble(indexOfBubble)}
+            onClick={() => popBubble(bubble.index)}
             className="absolute h-10 w-10 cursor-pointer rounded-full bg-sky-500 opacity-10 transition-transform duration-[50000ms] hover:h-[41px] hover:w-[38px]"
             style={{
                 transform: `translate(${bubblePosition.x}px, ${bubblePosition.y}px)`,
@@ -42,6 +45,7 @@ export default function Bubble({
             }}
         >
             <div className="absolute right-2 top-1 h-2 w-2 rounded-full bg-white" />
+            <span className="text-lg font-bold opacity-100"></span>
         </div>
     )
 }

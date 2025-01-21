@@ -14,6 +14,7 @@ export default {
             },
             animation: {
                 pointdown: "pointdown 1.1s linear infinite",
+                drift: "drift 5s ease-in-out infinite",
             },
             keyframes: {
                 pointdown: {
@@ -24,10 +25,10 @@ export default {
                     "100%": { transform: "translateY(0px)" },
                 },
             },
+            fontFamily: {
+                main: ["Marcellus", "serif"],
+            },
         },
-        fontFamily: {
-            main: ["Marcellus", "serif"],
-        },
+        plugins: ["prettier-plugin-tailwindcss"],
     },
-    plugins: ["prettier-plugin-tailwindcss"],
 }

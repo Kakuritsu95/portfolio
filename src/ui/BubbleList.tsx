@@ -1,41 +1,21 @@
-import { useState } from "react"
 import { DimensionProps } from "../types/dimensions"
 import Bubble from "./Bubble"
+import { useBubbleContext } from "../context/BubbleContext"
 
 export default function BubbleList({
-    bubbleQuantity = 20,
     containerDimensions,
 }: {
-    bubbleQuantity: number
     containerDimensions: DimensionProps
 }) {
-    const [bubbles, setBubbles] = useState<number[]>(() =>
-        Array.from({ length: bubbleQuantity }, (_, i) => i + 1),
-    )
-    function popBubble(indexOfBubble: number) {
-        console.log(
-            indexOfBubble,
-            bubbles.findIndex((val) => val == indexOfBubble),
-        )
-        setBubbles([
-            ...bubbles.slice(
-                0,
-                bubbles.findIndex((val) => val == indexOfBubble),
-            ),
-            ...bubbles.slice(
-                bubbles.findIndex((val) => val == indexOfBubble) + 1,
-            ),
-        ])
-    }
+    const { bubbles } = useBubbleContext()
 
     return (
         <ul>
-            {bubbles.map((i) => (
+            {bubbles.map((bubble) => (
                 <Bubble
-                    key={i}
+                    key={bubble.index}
                     containerDimensions={containerDimensions}
-                    indexOfBubble={i}
-                    popBubble={popBubble}
+                    bubble={bubble}
                 />
             ))}
         </ul>
