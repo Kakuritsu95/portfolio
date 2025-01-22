@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useBubbleContext } from "../context/BubbleContext"
+import { useBubbleContext } from "../../context/BubbleContext"
 
 export default function BubbleWand() {
     const [isCreating, setIsCreating] = useState<boolean>(false)

@@ -11,8 +11,8 @@ import {
 } from "react"
 const observerOptions = {
     root: null,
-    rootMargin: "100px",
-    threshold: 1.0,
+    rootMargin: "0px",
+    threshold: 0.5,
 }
 interface SectionContextProperties {
     selectedSectionIndex: number
@@ -26,9 +26,13 @@ const defaultValue: SectionContextProperties = {
 
 const SectionContext = createContext<SectionContextProperties>(defaultValue)
 
-export function SectionContextProvider({ children }: { children: ReactNode }) {
+export function SectionContextProvider({
+    children,
+}: {
+    children: ReactNode[]
+}) {
     const sectionRefs = useRef(
-        [...Array(4)].map(() => createRef<HTMLDivElement>()),
+        [...Array(4)].map((el) => createRef<HTMLDivElement>()),
     )
 
     const [selectedSectionIndex, setSelectedSectionIndex] = useState<number>(0)
@@ -40,7 +44,7 @@ export function SectionContextProvider({ children }: { children: ReactNode }) {
                     const index = sectionRefs.current.findIndex(
                         (section) => section.current == entry.target,
                     )
-                    console.log(index)
+
                     setSelectedSectionIndex(() => index)
                 }
             })

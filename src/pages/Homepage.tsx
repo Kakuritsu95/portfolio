@@ -1,5 +1,7 @@
-import IntroSection from "../features/introduction/IntroSection"
+import IntroSection from "../sections/introduction/IntroSection"
 import { useSectionContext } from "../context/SectionsContext"
+import AboutmeSection from "../sections/About/AboutmeSection"
+import ProjectsSection from "../sections/projects/ProjectsSection"
 
 export default function Homepage() {
     const { sectionRefs } = useSectionContext()
@@ -7,19 +9,8 @@ export default function Homepage() {
     return (
         <>
             <IntroSection />
-
-            <section
-                ref={sectionRefs?.current[1]}
-                className="aboutme relative h-dvh w-full"
-            >
-                Section 2
-            </section>
-            <section
-                ref={sectionRefs?.current[2]}
-                className="projects relative h-dvh w-full"
-            >
-                Section 3
-            </section>
+            <AboutmeSection />
+            <ProjectsSection />
             <section
                 ref={sectionRefs?.current[3]}
                 className="contact information relative h-dvh w-full"

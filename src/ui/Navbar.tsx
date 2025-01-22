@@ -13,22 +13,19 @@ const navbarListData: NavbarListItemData[] = [
     { icon: MdEmail, text: "Contact me" },
 ]
 export default function Navbar() {
-    const [activeNavbarItem, setActiveNavbarItem] = useState<string>(
-        navbarListData[0].text,
-    )
+    const [activeNavbarItem, setActiveNavbarItem] = useState<string>("")
     const { selectedSectionIndex } = useSectionContext()
     return (
         <nav>
             <ul
                 onMouseLeave={() => setActiveNavbarItem("")}
-                className="cursor-pointer space-y-3.5 text-xl font-bold"
+                className="flex cursor-pointer gap-3.5 text-xl font-bold lg:flex-col"
             >
                 {navbarListData.map((item, i) => (
                     <NavbarListItem
                         Icon={item.icon}
                         text={item.text}
                         setActiveNavbarItem={setActiveNavbarItem}
-                        isActive={activeNavbarItem == item.text}
                         activeNavbarItem={activeNavbarItem}
                         isSelected={i == selectedSectionIndex}
                         key={item.text}

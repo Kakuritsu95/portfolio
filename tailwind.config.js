@@ -7,14 +7,14 @@ export default {
     theme: {
         extend: {
             fontSize: {
-                "4xl": "3.2rem",
+                "4xl": "2.5rem",
+                "5xl": "3.2rem",
             },
             backgroundColor: {
                 "dark-gray": "var(--dark-gray)",
             },
             animation: {
                 pointdown: "pointdown 1.1s linear infinite",
-                drift: "drift 5s ease-in-out infinite",
             },
             keyframes: {
                 pointdown: {

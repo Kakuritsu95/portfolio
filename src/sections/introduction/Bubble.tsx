@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { DimensionProps } from "../types/dimensions"
-import { BubbleType, useBubbleContext } from "../context/BubbleContext"
+import { BubbleType, useBubbleContext } from "../../context/BubbleContext"
+import { DimensionProps } from "../../types/dimensions"
 
 export default function Bubble({
     containerDimensions,

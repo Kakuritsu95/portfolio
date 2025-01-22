@@ -1,6 +1,6 @@
-import { DimensionProps } from "../types/dimensions"
+import { useBubbleContext } from "../../context/BubbleContext"
+import { DimensionProps } from "../../types/dimensions"
 import Bubble from "./Bubble"
-import { useBubbleContext } from "../context/BubbleContext"
 
 export default function BubbleList({
     containerDimensions,
