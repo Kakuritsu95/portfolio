@@ -8,7 +8,7 @@ export default function BubbleWand() {
         if (!isCreating) return
         setTimeout(() => {
             setIsCreating(false)
-            createBubble({ x: 65, y: -80 })
+            createBubble({ x: 70, y: 0 })
         }, 1200)
     }, [isCreating])
     return (

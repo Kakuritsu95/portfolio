@@ -10,7 +10,7 @@ export default function BubbleList({
     const { bubbles } = useBubbleContext()
 
     return (
-        <ul>
+        <ul className="absolute left-0 top-0">
             {bubbles.map((bubble) => (
                 <Bubble
                     key={bubble.index}

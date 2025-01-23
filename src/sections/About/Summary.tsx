@@ -1,4 +1,5 @@
 import { useSectionContext } from "../../context/SectionsContext"
+import Button from "../../ui/Button"
 
 export default function Summary() {
     const { sectionRefs } = useSectionContext()
@@ -45,27 +46,27 @@ export default function Summary() {
                     discuss further in an interview.
                 </p>
             </div>
-            <div className="space-x-5">
-                <button
+            <div className="flex space-x-5">
+                <Button
+                    color="rose"
                     onClick={() => {
                         sectionRefs?.current[2].current?.scrollIntoView({
                             behavior: "smooth",
                         })
                     }}
-                    className="rounded bg-rose-500 px-12 py-3 text-xl font-semibold text-gray-100 duration-300 hover:bg-rose-600"
                 >
                     Projects
-                </button>
-                <button
+                </Button>
+                <Button
+                    color="violet"
                     onClick={() => {
                         sectionRefs?.current[3].current?.scrollIntoView({
                             behavior: "smooth",
                         })
                     }}
-                    className="rounded bg-violet-500 px-12 py-3 text-xl font-semibold text-gray-100 duration-300 hover:bg-violet-600"
                 >
                     Contact
-                </button>
+                </Button>
             </div>
         </div>
     )

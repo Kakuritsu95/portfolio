@@ -9,10 +9,11 @@ import {
     useRef,
     useState,
 } from "react"
+import { sectionsData } from "../constants/sectionsData"
 const observerOptions = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.5,
+    threshold: 0.3,
 }
 interface SectionContextProperties {
     selectedSectionIndex: number
@@ -32,7 +33,7 @@ export function SectionContextProvider({
     children: ReactNode[]
 }) {
     const sectionRefs = useRef(
-        [...Array(4)].map((el) => createRef<HTMLDivElement>()),
+        sectionsData.map(() => createRef<HTMLDivElement>()),
     )
 
     const [selectedSectionIndex, setSelectedSectionIndex] = useState<number>(0)
@@ -44,8 +45,15 @@ export function SectionContextProvider({
                     const index = sectionRefs.current.findIndex(
                         (section) => section.current == entry.target,
                     )
-
                     setSelectedSectionIndex(() => index)
+
+                    if (sectionRefs.current[index].current) {
+                        sectionRefs.current[index].current.style.opacity = "100"
+                        sectionRefs.current[index].current.style.paddingTop =
+                            "4rem"
+                        sectionRefs.current[index].current.style.paddingBottom =
+                            "4rem"
+                    }
                 }
             })
         }
