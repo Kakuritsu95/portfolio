@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react"
+import { LegacyRef, useEffect, useRef, useState } from "react"
 import { useBubbleContext } from "../../context/BubbleContext"
 
 export default function BubbleWand() {
     const [isCreating, setIsCreating] = useState<boolean>(false)
     const { createBubble } = useBubbleContext()
+
     useEffect(() => {
         if (!isCreating) return
         setTimeout(() => {
             setIsCreating(false)
-            createBubble({ x: 70, y: 0 })
+            createBubble({ x: 70, y: 70 })
         }, 1200)
     }, [isCreating])
+
     return (
-        <div className="relative flex hover:cursor-pointer">
+        <div className="relative ml-0 mt-14 flex hover:cursor-pointer">
             <img
                 src="/bubble-wand.svg"
                 alt="magic-wand"

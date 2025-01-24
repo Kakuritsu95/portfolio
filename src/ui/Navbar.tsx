@@ -1,17 +1,20 @@
-import NavbarListItem from "./NavbarListItem"
 import { useState } from "react"
 import { useSectionContext } from "../context/SectionsContext"
 import { sectionsData } from "../constants/sectionsData"
+import NavbarListItem from "./NavbarListItem"
+import ThemeToggleButton from "./ThemeToggleButton"
+
+import ContactLinks from "./ContactLinks"
 
 export default function Navbar() {
     const [activeNavbarItem, setActiveNavbarItem] = useState<string>("")
     const { selectedSectionIndex } = useSectionContext()
 
     return (
-        <nav>
+        <nav className="flex flex-row items-center lg:flex-col lg:items-start lg:gap-24">
             <ul
                 onMouseLeave={() => setActiveNavbarItem("")}
-                className="flex cursor-pointer gap-3.5 text-xl font-bold lg:flex-col"
+                className="flex cursor-pointer items-center gap-3.5 text-xl font-bold lg:flex-col lg:items-start"
             >
                 {sectionsData.map((section, i) => (
                     <NavbarListItem
@@ -24,7 +27,11 @@ export default function Navbar() {
                         index={i}
                     />
                 ))}
+                <ThemeToggleButton />
             </ul>
+            <div className="hidden lg:block">
+                <ContactLinks />
+            </div>
         </nav>
     )
 }

@@ -4,6 +4,7 @@ import Button from "../../ui/Button"
 import { LiaSpinnerSolid } from "react-icons/lia"
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         setIsSubmitting(true)
@@ -23,8 +24,8 @@ export default function ContactForm() {
         setIsSubmitting(false)
     }
     return (
-        <form onSubmit={handleSubmit} className="w-full space-y-12 xl:w-2/3">
-            <div className="flex flex-col justify-between gap-12 xl:flex-row">
+        <form onSubmit={handleSubmit} className="space-y-12">
+            <div className="flex flex-col justify-between gap-12 xl:w-[55rem] xl:flex-row">
                 <ContactFormField
                     labelText="Your name"
                     name="name"

@@ -32,16 +32,20 @@ export default function IntroSection() {
 
     return (
         <BubbleContextProvider bubbleQuantity={25}>
-            <SectionWrapper ref={introSectionRef} bgColor="#ebfdfd">
+            <SectionWrapper
+                ref={introSectionRef}
+                bgColor="bg-[#f9fdfd]"
+                darkModeBgColor="dark:bg-[#212627]"
+            >
                 <div className="absolute left-0 top-0">
                     <BubbleWand />
                 </div>
-                <div className="flex space-x-8">
+                <div className="flex space-x-8 text-center">
                     <RotatingBox
                         gradientFrom="from-sky-500"
                         gradientTo="to-teal-500"
                     />
-                    <div className="space-y-5 text-4xl text-gray-700">
+                    <div className="space-y-5 text-3xl leading-10 text-gray-700 dark:text-gray-200 sm:text-4xl sm:leading-normal">
                         <div>
                             Hi, I`m{" "}
                             <span className="font-bold text-emerald-400">
@@ -66,7 +70,7 @@ export default function IntroSection() {
                         <p className="text-lg font-[500]">
                             Welcome to my portfolio!
                         </p>
-                        <div className="flex flex-col items-center gap-4 text-wrap sm:flex-row">
+                        <div className="flex flex-col items-center gap-12 text-wrap sm:flex-row lg:gap-4">
                             <span className="text-2xl font-normal">
                                 Learn more about my journey, skills and
                                 projects!
@@ -77,7 +81,7 @@ export default function IntroSection() {
                                         { behavior: "smooth" },
                                     )
                                 }
-                                className="animate-pointdown rounded bg-gray-300 p-1 duration-200 hover:bg-blue-500 hover:text-white"
+                                className="animate-pointdown rounded bg-gray-300 p-1 duration-200 hover:bg-blue-500 hover:text-white dark:bg-gray-300 dark:text-gray-800 dark:hover:bg-blue-500"
                             >
                                 <FaArrowDown size={20} />
                             </button>

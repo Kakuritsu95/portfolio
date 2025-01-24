@@ -1,18 +1,21 @@
 import { ReactElement, forwardRef } from "react"
 interface SectionWrapperProps {
     children: ReactElement[] | ReactElement
-
     bgColor?: string
+    darkModeBgColor?: string
 }
 const SectionWrapper = forwardRef<HTMLDivElement, SectionWrapperProps>(
-    ({ children, bgColor }, ref) => {
+    ({ children, bgColor, darkModeBgColor }, ref) => {
         return (
             <section
                 ref={ref}
-                // style={{ backgroundColor: bgColor }}
-                className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-4 pt-32 opacity-0 duration-1000 lg:px-10 2xl:px-24 dark:bg-red-500"
+                style={{ transitionProperty: "padding" }}
+                className={`${bgColor} ${darkModeBgColor} relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-4 py-16 dark:text-gray-100 lg:px-10 2xl:px-24`}
             >
-                {children}
+                <div className="space-y-32 pt-32 opacity-0 duration-1000">
+                    {" "}
+                    {children}
+                </div>
             </section>
         )
     },

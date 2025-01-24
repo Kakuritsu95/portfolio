@@ -4,9 +4,9 @@ export default function useLocalStorage(
     key: string,
 ): [string, Dispatch<SetStateAction<string>>] {
     const [storageItem, setStorageITem] = useState<string>(() => {
-        const theme = window.localStorage.getItem(key)
-        if (!theme) return "light"
-        return theme
+        const item = window.localStorage.getItem(key)
+        if (!item) return ""
+        return item
     })
     useEffect(() => {
         if (storageItem) {

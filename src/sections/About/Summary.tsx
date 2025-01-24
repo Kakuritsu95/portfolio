@@ -4,9 +4,9 @@ import Button from "../../ui/Button"
 export default function Summary() {
     const { sectionRefs } = useSectionContext()
     return (
-        <div className="flex-1 space-y-4">
+        <div className="flex-1 space-y-4 text-wrap">
             <h3 className="text-2xl font-bold">Short summary!</h3>
-            <div className="space-y-3 text-lg font-normal text-gray-600">
+            <div className="space-y-3 text-lg font-normal text-gray-600 dark:text-gray-200">
                 <p>
                     I`m a{" "}
                     <span className="font-semibold">

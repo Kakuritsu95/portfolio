@@ -48,11 +48,12 @@ export function SectionContextProvider({
                     setSelectedSectionIndex(() => index)
 
                     if (sectionRefs.current[index].current) {
-                        sectionRefs.current[index].current.style.opacity = "100"
-                        sectionRefs.current[index].current.style.paddingTop =
-                            "4rem"
-                        sectionRefs.current[index].current.style.paddingBottom =
-                            "4rem"
+                        const sectionContentDivWrapper =
+                            sectionRefs.current[
+                                index
+                            ].current.getElementsByTagName("div")[0]
+                        sectionContentDivWrapper.style.opacity = "100"
+                        sectionContentDivWrapper.style.padding = "0"
                     }
                 }
             })

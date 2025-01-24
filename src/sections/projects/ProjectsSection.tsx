@@ -1,42 +1,42 @@
 import { useSectionContext } from "../../context/SectionsContext"
+import Button from "../../ui/Button"
 import Sectionheader from "../../ui/SectionHeader"
 import SectionWrapper from "../../ui/SectionWrapper"
-
+import { projects } from "../../constants/projects"
 export default function ProjectsSection() {
     const { sectionRefs } = useSectionContext()
-    const projects: string[] = ["Kakushops", "GlobeGurus", "Cabins"]
 
     return (
-        <SectionWrapper ref={sectionRefs?.current[2]!} bgColor="#fbfefe">
+        <SectionWrapper
+            ref={sectionRefs?.current[2]!}
+            bgColor="bg-[#f9fdfd]"
+            darkModeBgColor="dark:bg-[#282727]"
+        >
             <Sectionheader
                 title="my projects"
-                subTitle="Here's a showcase of my work"
-                subTitle2="These projects were conceptualized, planned, and built
+                subTitle="Here's a showcase of my work. These projects were conceptualized, planned, and built
                         entirely from scratch by me"
             />
             <ul className="flex flex-col space-y-10">
                 {projects.map((project, i) => (
                     <li
-                        key={project}
+                        key={project.id}
                         className="flex flex-col items-center justify-center gap-10 text-center xl:flex-row xl:gap-24 xl:text-start"
                     >
                         <img
-                            src={i != 1 ? "/kakushops.png" : "/globegurus.png"}
+                            src={project.imageUrl}
                             className="flex-1 xl:w-1/2"
                             loading="lazy"
                         />
                         <div className="space-y-10">
-                            <h3 className="text-2xl font-bold">{project}</h3>
-                            <p className="mx-auto text-lg text-gray-700 xl:mx-0 2xl:w-2/3">
-                                Dopefolio is a successful Open-Source project
-                                that I created which have been featured on some
-                                of the biggest tech sites like CSS-Tricks,
-                                Hostinger, etc & used by thousands of developers
-                                globally
+                            <h3 className="text-2xl font-bold">
+                                {project.title}
+                            </h3>
+                            <p className="mx-auto text-lg xl:mx-0">
+                                {project.description}
                             </p>
-                            <button className="rounded bg-sky-600 px-11 py-3 text-lg font-semibold text-gray-50">
-                                READ MORE
-                            </button>
+
+                            <Button color="sky">READ MORE</Button>
                         </div>
                     </li>
                 ))}
