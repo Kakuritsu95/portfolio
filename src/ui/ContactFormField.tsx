@@ -1,11 +1,13 @@
 interface ContactFormFieldProps {
-    type?: "input" | "textarea"
+    inputType?: "input" | "textarea"
+    type?: "email" | "text" | "number"
     name: string
     placeHolder: string
     labelText: string
 }
 export default function ContactFormField({
-    type = "input",
+    inputType = "input",
+    type = "text",
     name,
     placeHolder,
     labelText,
@@ -19,10 +21,12 @@ export default function ContactFormField({
                 {labelText}
             </label>
 
-            {type == "input" ? (
+            {inputType == "input" ? (
                 <input
-                    type="text"
+                    type={type}
+                    required={name != "name"}
                     name={name}
+                    minLength={4}
                     id={name}
                     placeholder={placeHolder}
                     className="border-b border-gray-600 pb-2.5 text-xl outline-none focus:text-blue-900 dark:border-gray-200 dark:bg-inherit dark:focus:text-gray-50"
@@ -30,6 +34,7 @@ export default function ContactFormField({
             ) : (
                 <textarea
                     placeholder={placeHolder}
+                    required
                     name={name}
                     className="resize-none border-b border-gray-600 pb-2.5 text-xl outline-none focus:text-blue-900 dark:border-gray-200 dark:bg-inherit dark:focus:text-gray-50"
                 />

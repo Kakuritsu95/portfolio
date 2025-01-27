@@ -12,7 +12,7 @@ const SectionWrapper = forwardRef<HTMLDivElement, SectionWrapperProps>(
                 style={{ transitionProperty: "padding" }}
                 className={`${bgColor} ${darkModeBgColor} relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-4 py-16 dark:text-gray-100 lg:px-10 2xl:px-24`}
             >
-                <div className="space-y-32 pt-32 opacity-0 duration-1000">
+                <div className="flex flex-col gap-32 pt-32 opacity-0 duration-1000">
                     {" "}
                     {children}
                 </div>

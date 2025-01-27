@@ -20,7 +20,7 @@ export const projects: Project[] = [
         id: 2,
         title: "GlobeGurus",
         description:
-            "GlobeGurus is a social web app for travel enthusiasts to create and share guides for local areas or destinations they've visited. Using an interactive map powered by the Google Maps API, users can explore nearby points of interest and view detailed information for selected locations. Features include liking and commenting on guides, a leaderboard highlighting top contributors, and advanced searches based on location proximity. Built with React, Node.js/Express.js, and Mongoose, GlobeGurus offers a dynamic platform for sharing travel insights and discovering new destinations.",
+            "GlobeGurus is a social web app for travel enthusiasts to create and share guides for local areas or destinations they've visited. Using an interactive map powered by the Google Maps API, users can create and share custom guides for their local areas or places they've visited. Features include liking and commenting on guides, a leaderboard highlighting top contributors, and advanced searches based on popularity and location proximity. Built with React, Node.js/Express.js, and Mongoose. GlobeGurus offers a dynamic platform for sharing travel insights and discovering new destinations.",
         imageUrl: "/globegurus.png",
         viewUrl: "",
         detailsUrl: "",
