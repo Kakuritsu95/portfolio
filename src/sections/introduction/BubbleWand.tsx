@@ -1,4 +1,4 @@
-import { LegacyRef, useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useBubbleContext } from "../../context/BubbleContext"
 
 export default function BubbleWand() {

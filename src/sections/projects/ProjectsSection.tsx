@@ -3,6 +3,8 @@ import Button from "../../ui/Button"
 import Sectionheader from "../../ui/SectionHeader"
 import SectionWrapper from "../../ui/SectionWrapper"
 import { projects } from "../../constants/projects"
+import { SlGlobe } from "react-icons/sl"
+import { FaGithub } from "react-icons/fa"
 export default function ProjectsSection() {
     const { sectionRefs } = useSectionContext()
 
@@ -17,8 +19,8 @@ export default function ProjectsSection() {
                 subTitle="Here's a showcase of my work. These projects were conceptualized, planned, and built
                         entirely from scratch by me"
             />
-            <ul className="flex flex-col space-y-10">
-                {projects.map((project, i) => (
+            <ul className="flex flex-col space-y-20">
+                {projects.map((project) => (
                     <li
                         key={project.id}
                         className="flex flex-col items-center justify-center gap-10 text-center xl:flex-row xl:gap-24 xl:text-start"
@@ -35,8 +37,28 @@ export default function ProjectsSection() {
                             <p className="mx-auto text-lg xl:mx-0">
                                 {project.description}
                             </p>
-
-                            <Button color="sky">READ MORE</Button>
+                            <div className="flex justify-center gap-5 xl:justify-start">
+                                <Button
+                                    to={project.projectURL}
+                                    newTab
+                                    color="sky"
+                                >
+                                    <div className="flex items-center space-x-3">
+                                        <span>VISIT</span>
+                                        <SlGlobe />
+                                    </div>
+                                </Button>
+                                <Button
+                                    to={project.gitHubURL}
+                                    newTab
+                                    color="sky"
+                                >
+                                    <div className="flex items-center space-x-3">
+                                        <span>GitHub</span>
+                                        <FaGithub />
+                                    </div>
+                                </Button>
+                            </div>
                         </div>
                     </li>
                 ))}

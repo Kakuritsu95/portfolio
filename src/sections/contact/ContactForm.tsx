@@ -6,6 +6,7 @@ import { LiaSpinnerSolid } from "react-icons/lia"
 export default function ContactForm() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
     const [error, setError] = useState<string>()
+    const [isSubmitSuccess, setIsSubmitSuccess] = useState(false)
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
         setIsSubmitting(true)
@@ -13,7 +14,7 @@ export default function ContactForm() {
         const formData: { [k: string]: FormDataEntryValue } =
             Object.fromEntries(form)
         const response: Response = await fetch(
-            `https://formspree.io/f/${import.meta.env.VITE_FORM_ID}s`,
+            `https://formspree.io/f/${import.meta.env.VITE_FORM_ID}`,
             {
                 method: "POST",
                 body: JSON.stringify(formData),
@@ -23,7 +24,11 @@ export default function ContactForm() {
             },
         )
         if (response.status !== 200) setError("Something went wrong")
-        else setError("")
+        else {
+            setError("")
+            setIsSubmitSuccess(true)
+        }
+
         setIsSubmitting(false)
     }
 
@@ -32,6 +37,13 @@ export default function ContactForm() {
             {error && (
                 <p className="font-semibold text-red-400">
                     {error}. Please contact directly with my email address.
+                </p>
+            )}
+            {isSubmitSuccess && (
+                <p className="text-center text-lg font-semibold text-green-500">
+                    Thank you for reaching out! I’ve received your message and
+                    will get back to you as soon as possible. Looking forward to
+                    connecting with you!
                 </p>
             )}
             <div className="flex flex-col justify-between gap-12 xl:w-[55rem] xl:flex-row">
@@ -55,16 +67,18 @@ export default function ContactForm() {
                     placeHolder="Hey there! Let's talk about..."
                 />
             </div>
-            <Button color="rose" disabled={isSubmitting}>
-                {isSubmitting ? (
-                    <LiaSpinnerSolid
-                        size={28}
-                        className="mx-[1.15rem] animate-spin"
-                    />
-                ) : (
-                    <span>Submit</span>
-                )}
-            </Button>
+            <div>
+                <Button color="rose" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                        <LiaSpinnerSolid
+                            size={28}
+                            className="mx-[1.15rem] animate-spin"
+                        />
+                    ) : (
+                        <span>Submit</span>
+                    )}
+                </Button>
+            </div>
         </form>
     )
 }

@@ -16,7 +16,7 @@ export default function NavbarLinkItem({
             className="flex items-center gap-3 font-semibold hover:text-blue-400 dark:text-gray-100 dark:hover:text-blue-400"
             target="_blank"
         >
-            <Icon size={32} />
+            <Icon className="min-h-8 min-w-8" />
             <span>{children}</span>
         </a>
     )
